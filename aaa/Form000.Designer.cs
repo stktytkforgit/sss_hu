@@ -38,6 +38,8 @@
 			this.tssLabel003 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.panel000 = new System.Windows.Forms.Panel();
 			this.pictureBox000 = new System.Windows.Forms.PictureBox();
+			this.menuDebug = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuDebugExec = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip000.SuspendLayout();
 			this.statusStrip000.SuspendLayout();
 			this.panel000.SuspendLayout();
@@ -47,7 +49,8 @@
 			// menuStrip000
 			// 
 			this.menuStrip000.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuApplication});
+            this.menuApplication,
+            this.menuDebug});
 			this.menuStrip000.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip000.Name = "menuStrip000";
 			this.menuStrip000.Size = new System.Drawing.Size(649, 24);
@@ -130,10 +133,28 @@
 			// 
 			this.pictureBox000.Location = new System.Drawing.Point(16, 16);
 			this.pictureBox000.Name = "pictureBox000";
-			this.pictureBox000.Size = new System.Drawing.Size(100, 50);
+			this.pictureBox000.Size = new System.Drawing.Size(272, 144);
 			this.pictureBox000.TabIndex = 0;
 			this.pictureBox000.TabStop = false;
 			this.pictureBox000.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox000_Paint);
+			this.pictureBox000.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox000_MouseDown);
+			this.pictureBox000.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox000_MouseMove);
+			// 
+			// menuDebug
+			// 
+			this.menuDebug.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDebugExec});
+			this.menuDebug.Name = "menuDebug";
+			this.menuDebug.Size = new System.Drawing.Size(56, 20);
+			this.menuDebug.Text = "Debug";
+			// 
+			// menuDebugExec
+			// 
+			this.menuDebugExec.Name = "menuDebugExec";
+			this.menuDebugExec.ShortcutKeys = System.Windows.Forms.Keys.F5;
+			this.menuDebugExec.Size = new System.Drawing.Size(152, 22);
+			this.menuDebugExec.Text = "Exec";
+			this.menuDebugExec.Click += new System.EventHandler(this.menuDebugExec_Click);
 			// 
 			// Form000
 			// 
@@ -171,6 +192,8 @@
 		private System.Windows.Forms.PictureBox pictureBox000;
 		private System.Windows.Forms.ToolStripMenuItem menuApplication;
 		private System.Windows.Forms.ToolStripMenuItem menuApplicationQuit;
+		private System.Windows.Forms.ToolStripMenuItem menuDebug;
+		private System.Windows.Forms.ToolStripMenuItem menuDebugExec;
 	}
 }
 

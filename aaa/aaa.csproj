@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\_GazoYaroGdi\GazoYaroGdi.cs">
+      <Link>GazoYaroGdi.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_GazoYaroImageProcessing\GazoYaroImageProcessing.cs">
+      <Link>GazoYaroImageProcessing.cs</Link>
+    </Compile>
     <Compile Include="..\..\_GazoYaroTypedefImgNN\GazoTypedefImgNN.cs">
       <Link>GazoTypedefImgNN.cs</Link>
     </Compile>
