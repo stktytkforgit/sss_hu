@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.menuStrip000 = new System.Windows.Forms.MenuStrip();
+			this.menuApplication = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuApplicationQuit = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip000 = new System.Windows.Forms.StatusStrip();
 			this.tssLabel000 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tssLabel002 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -36,8 +38,6 @@
 			this.tssLabel003 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.panel000 = new System.Windows.Forms.Panel();
 			this.pictureBox000 = new System.Windows.Forms.PictureBox();
-			this.menuApplication = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuApplicationQuit = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip000.SuspendLayout();
 			this.statusStrip000.SuspendLayout();
 			this.panel000.SuspendLayout();
@@ -53,6 +53,21 @@
 			this.menuStrip000.Size = new System.Drawing.Size(649, 24);
 			this.menuStrip000.TabIndex = 0;
 			this.menuStrip000.Text = "menuStrip000";
+			// 
+			// menuApplication
+			// 
+			this.menuApplication.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuApplicationQuit});
+			this.menuApplication.Name = "menuApplication";
+			this.menuApplication.Size = new System.Drawing.Size(82, 20);
+			this.menuApplication.Text = "Application";
+			// 
+			// menuApplicationQuit
+			// 
+			this.menuApplicationQuit.Name = "menuApplicationQuit";
+			this.menuApplicationQuit.Size = new System.Drawing.Size(152, 22);
+			this.menuApplicationQuit.Text = "Quit";
+			this.menuApplicationQuit.Click += new System.EventHandler(this.menuApplicationQuit_Click);
 			// 
 			// statusStrip000
 			// 
@@ -118,20 +133,7 @@
 			this.pictureBox000.Size = new System.Drawing.Size(100, 50);
 			this.pictureBox000.TabIndex = 0;
 			this.pictureBox000.TabStop = false;
-			// 
-			// menuApplication
-			// 
-			this.menuApplication.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuApplicationQuit});
-			this.menuApplication.Name = "menuApplication";
-			this.menuApplication.Size = new System.Drawing.Size(82, 20);
-			this.menuApplication.Text = "Application";
-			// 
-			// menuApplicationQuit
-			// 
-			this.menuApplicationQuit.Name = "menuApplicationQuit";
-			this.menuApplicationQuit.Size = new System.Drawing.Size(152, 22);
-			this.menuApplicationQuit.Text = "Quit";
+			this.pictureBox000.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox000_Paint);
 			// 
 			// Form000
 			// 
@@ -144,6 +146,7 @@
 			this.MainMenuStrip = this.menuStrip000;
 			this.Name = "Form000";
 			this.Text = "Form000";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form000_FormClosing);
 			this.Load += new System.EventHandler(this.Form000_Load);
 			this.menuStrip000.ResumeLayout(false);
 			this.menuStrip000.PerformLayout();

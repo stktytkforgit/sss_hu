@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\_GazoYaroTypedefImgNN\GazoTypedefImgNN.cs">
+      <Link>GazoTypedefImgNN.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_GazoYaroUtil\GazoYaroUtil.cs">
+      <Link>GazoYaroUtil.cs</Link>
+    </Compile>
     <Compile Include="Form000.cs">
       <SubType>Form</SubType>
     </Compile>
