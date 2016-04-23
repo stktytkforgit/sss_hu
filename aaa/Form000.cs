@@ -12,9 +12,16 @@ namespace aaa
 {
 	public partial class Form000 : Form
 	{
+
 		public Form000()
 		{
 			InitializeComponent();
 		}
+
+		private void Form000_Load(object sender, EventArgs e)
+		{
+
+		}
+
 	}
 }
