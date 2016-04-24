@@ -119,12 +119,14 @@ namespace aaa
 			gyg.DrawCrossLine( grph, Color.Red, Xg, Yg, w, h );
 			
 			double r = 500.0;
-			double tmp_x = Xg + ( r * Math.Cos( Angle ));
-			double tmp_y = Yg - ( r * Math.Sin( Angle ));
+			double dx = ( r * Math.Cos( Angle ));
+			double dy = ( r * Math.Sin( Angle ));
 
-			int x = (int)( tmp_x + 0.5 );
-			int y = (int)( tmp_y + 0.5 );
-			gyg.DrawLine( grph, Color.Lime, Xg, Yg, x, y );
+			int xs = (int)( Xg + dx );
+			int ys = (int)( Yg + dy );
+			int xe = (int)( Xg - dx );
+			int ye = (int)( Yg - dy );
+			gyg.DrawLine( grph, Color.Lime, xs, ys, xe, ye );
 
 		}
 
@@ -135,6 +137,9 @@ namespace aaa
 
 		private void pictureBox000_MouseDown(object sender, MouseEventArgs e)
 		{
+
+			int w = Bmp000.Width;
+			int h = Bmp000.Height;
 
 			if (( e.Button & MouseButtons.Left ) == MouseButtons.Left )
 			{
@@ -147,8 +152,6 @@ namespace aaa
 				int wh = 16;
 
 				GazoYaroImageProcessing gyip = new GazoYaroImageProcessing();
-				int w = Bmp000.Width;
-				int h = Bmp000.Height;
 				int xs = x - ( wh >> 1 );
 				int ys = y - ( wh >> 1 );
 				int xe = xs + wh - 1;
@@ -162,9 +165,6 @@ namespace aaa
 			}
 			else if (( e.Button & MouseButtons.Right ) == MouseButtons.Right )
 			{
-			
-				int w = Bmp000.Width;
-				int h = Bmp000.Height;
 
 				GazoYaroImageProcessing gyip = new GazoYaroImageProcessing();
 				gyip.Fill( Data000, w, h, 0x00 );
@@ -200,18 +200,21 @@ namespace aaa
 			int w = Bmp000.Width;
 			int h = Bmp000.Height;
 
+			// 重心を取得する.
 			double xg = 0.0;
 			double yg = 0.0;
 			GetCoG( ref xg, ref yg, Data000, w, h );
 
+			// 重心からモーメントを取得する.
+			GazoYaroMomentUtil gymtu = new GazoYaroMomentUtil();
 			double M11 = 0.0;
 			double M20 = 0.0;
 			double M02 = 0.0;
-			Get_M11_M20_M02( ref M11, ref M20, ref M02, Data000, w, h, xg, yg );
+			gymtu.Get_M11_M20_M02( ref M11, ref M20, ref M02, Data000, w, h, xg, yg );
 
-			double top = 2.0 * M11;
-			double btm = M20 - M02;
-			Angle = 0.5 * Math.Atan( top / btm );
+			// モーメントから慣性主軸をもとめる.
+			Angle = 0.0;
+			get_angle_from_M11_M20_M02( ref Angle, M11, M20, M02 );
 
 			Xg = (int)( xg );
 			Yg = (int)( yg );
@@ -253,34 +256,38 @@ namespace aaa
 		
 		}
 
-		bool Get_M11_M20_M02( ref double M11, ref double M20, ref double M02, byte [] data, int w, int h, double xg, double yg )
+
+
+		bool get_angle_from_M11_M20_M02( ref double want, double M11, double M20, double M02 )
 		{
-
-			for ( int j = 0; j < h; j++ )
+			
+			double top = 2.0 * M11;
+			double btm = M20 - M02;
+			double radian = 0.5 * Math.Atan( top / btm );
+	
+			if ( btm == 0.0 )
 			{
-				for ( int i = 0; i < w; i++ )
+				// zero div.
+				want = 0.0;
+			}
+			else
+			{
+				if ( M20 > M02 )
 				{
-					
-					int x = i;
-					int y = j;
-
-					double dx = (double)( x - xg );
-					double dy = (double)( y - yg );
-
-					if ( data[ i + w * j ] != 0x00 )
-					{
-						M11 = dx * dy;
-						M20 = dx * dx;
-						M02 = dy * dy;
-					}
-
+					want = radian;
+				}
+				else
+				{
+					double pi = Math.PI; // 180deg.
+					double quarter_pi = 0.5 * pi; //  90deg.
+					want = radian + quarter_pi;
 				}
 			}
-	
+
 			return true;
 
 		}
-
+		
 
 	}
 }

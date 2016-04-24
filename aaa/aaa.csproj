@@ -87,6 +87,7 @@
     <Compile Include="Form000.Designer.cs">
       <DependentUpon>Form000.cs</DependentUpon>
     </Compile>
+    <Compile Include="GazoYaroMomentUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form000.resx">
