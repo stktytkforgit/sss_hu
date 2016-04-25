@@ -128,6 +128,19 @@ namespace aaa
 			int ye = (int)( Yg - dy );
 			gyg.DrawLine( grph, Color.Lime, xs, ys, xe, ye );
 
+
+			String str000 = "";
+			String str001 = "";
+			String str002 = "";
+			String str003 = "";
+
+			str000 = String.Format( "{0} * {1}", w, h );
+
+			tssLabel000.Text = str000;
+			tssLabel001.Text = str001;
+			tssLabel002.Text = str002;
+			tssLabel003.Text = str003;
+
 		}
 
 		private void menuApplicationQuit_Click(object sender, EventArgs e)
@@ -285,6 +298,24 @@ namespace aaa
 			}
 
 			return true;
+
+		}
+
+		private void menuFileSave_Click(object sender, EventArgs e)
+		{
+			
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.Filter = "BMP|*.bmp|ALL|*.*";
+			
+			if ( sfd.ShowDialog() == DialogResult.Cancel )
+			{
+				return;
+			}
+
+			String filepath = sfd.FileName;
+
+			ImageFormat fmt = ImageFormat.Bmp;
+			Bmp000.Save( filepath, fmt );
 
 		}
 		
