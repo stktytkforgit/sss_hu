@@ -309,6 +309,42 @@ namespace aaa
 			Bmp000.Save( filepath, fmt );
 
 		}
+
+		private void menuFileOpen_Click(object sender, EventArgs e)
+		{
+			
+			OpenFileDialog ofd = new OpenFileDialog();
+
+			if ( ofd.ShowDialog() == DialogResult.Cancel )
+			{
+				return;
+			}
+
+			Bitmap bmp = new Bitmap( ofd.FileName );
+
+			if ( bmp.Width != Bmp000.Width )
+			{
+				MessageBox.Show( "W != W" );
+				return;
+			}
+
+			if ( bmp.Height != Bmp000.Height )
+			{
+				MessageBox.Show( "H != H" );
+				return;
+			}
+
+			GazoYaroUtil gyu = new GazoYaroUtil();
+			
+			int w = bmp.Width;
+			int h = bmp.Height;
+			gyu.GetDataFromBmp( Data000, bmp, w, h );
+			gyu.SetDataToBmp( Bmp000, Data000, w, h );
+
+			pictureBox000.Invalidate( true );
+
+
+		}
 		
 
 	}
