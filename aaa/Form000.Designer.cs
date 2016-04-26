@@ -31,6 +31,8 @@
 			this.menuStrip000 = new System.Windows.Forms.MenuStrip();
 			this.menuApplication = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuApplicationQuit = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuFileSave = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuDebug = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuDebugExec = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStrip000 = new System.Windows.Forms.StatusStrip();
@@ -40,8 +42,6 @@
 			this.tssLabel003 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.panel000 = new System.Windows.Forms.Panel();
 			this.pictureBox000 = new System.Windows.Forms.PictureBox();
-			this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuFileSave = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip000.SuspendLayout();
 			this.statusStrip000.SuspendLayout();
 			this.panel000.SuspendLayout();
@@ -72,9 +72,25 @@
 			// 
 			this.menuApplicationQuit.Name = "menuApplicationQuit";
 			this.menuApplicationQuit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-			this.menuApplicationQuit.Size = new System.Drawing.Size(152, 22);
+			this.menuApplicationQuit.Size = new System.Drawing.Size(145, 22);
 			this.menuApplicationQuit.Text = "Quit";
 			this.menuApplicationQuit.Click += new System.EventHandler(this.menuApplicationQuit_Click);
+			// 
+			// menuFile
+			// 
+			this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFileSave});
+			this.menuFile.Name = "menuFile";
+			this.menuFile.Size = new System.Drawing.Size(39, 20);
+			this.menuFile.Text = "File";
+			// 
+			// menuFileSave
+			// 
+			this.menuFileSave.Name = "menuFileSave";
+			this.menuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+			this.menuFileSave.Size = new System.Drawing.Size(149, 22);
+			this.menuFileSave.Text = "Save";
+			this.menuFileSave.Click += new System.EventHandler(this.menuFileSave_Click);
 			// 
 			// menuDebug
 			// 
@@ -96,8 +112,8 @@
 			// 
 			this.statusStrip000.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssLabel000,
-            this.tssLabel002,
             this.tssLabel001,
+            this.tssLabel002,
             this.tssLabel003});
 			this.statusStrip000.Location = new System.Drawing.Point(0, 341);
 			this.statusStrip000.Name = "statusStrip000";
@@ -159,22 +175,6 @@
 			this.pictureBox000.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox000_Paint);
 			this.pictureBox000.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox000_MouseDown);
 			this.pictureBox000.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox000_MouseMove);
-			// 
-			// menuFile
-			// 
-			this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuFileSave});
-			this.menuFile.Name = "menuFile";
-			this.menuFile.Size = new System.Drawing.Size(39, 20);
-			this.menuFile.Text = "File";
-			// 
-			// menuFileSave
-			// 
-			this.menuFileSave.Name = "menuFileSave";
-			this.menuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.menuFileSave.Size = new System.Drawing.Size(152, 22);
-			this.menuFileSave.Text = "Save";
-			this.menuFileSave.Click += new System.EventHandler(this.menuFileSave_Click);
 			// 
 			// Form000
 			// 
